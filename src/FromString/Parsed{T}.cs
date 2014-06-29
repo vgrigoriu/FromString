@@ -19,6 +19,13 @@ namespace FromString
             hasValue = parser(rawValue, out value);
         }
 
+        // should this be public?
+        private Parsed(T value)
+        {
+            this.value = value;
+            hasValue = true;
+        } 
+
         public bool HasValue
         {
             get { return hasValue; }
@@ -37,6 +44,11 @@ namespace FromString
         public string RawValue
         {
             get { return rawValue; }
+        }
+
+        public static implicit operator Parsed<T>(T value)
+        {
+            return new Parsed<T>(value);
         }
     }
 

@@ -37,5 +37,14 @@ namespace FromString.Tests
 
             Assert.Equal("this is not a string", parsedInt.RawValue);
         }
+
+        [Fact]
+        public void CanAssignValueDirectly()
+        {
+            Parsed<decimal> directDecimal = 123.45m;
+
+            Assert.True(directDecimal.HasValue);
+            Assert.Equal(123.45m, directDecimal.Value);
+        }
     }
 }

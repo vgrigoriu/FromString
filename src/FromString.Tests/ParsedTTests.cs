@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace FromString.Tests
 {
@@ -11,6 +12,22 @@ namespace FromString.Tests
 
             Assert.True(parsedInt.HasValue);
             Assert.Equal(123, parsedInt.Value);
+        }
+
+        [Fact]
+        public void AnInvalidStringSetsHasValueFalse()
+        {
+            var parsedInt = new Parsed<int>("this is not a string");
+
+            Assert.False(parsedInt.HasValue);
+        }
+
+        [Fact]
+        public void AnInvalidStringThrowsExceptionWhenAccessingValue()
+        {
+            var parsedInt = new Parsed<int>("this is not a string");
+
+            Assert.Throws<InvalidOperationException>(() => parsedInt.Value);
         }
     }
 }

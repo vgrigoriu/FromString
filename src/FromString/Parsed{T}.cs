@@ -24,7 +24,12 @@ namespace FromString
 
         public T Value
         {
-            get { return value; }
+            get
+            {
+                if (!HasValue)
+                    throw new InvalidOperationException("Value was not parsed");
+                return value;
+            }
         }
     }
 

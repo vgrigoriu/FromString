@@ -29,5 +29,13 @@ namespace FromString.Tests
 
             Assert.Throws<InvalidOperationException>(() => parsedInt.Value);
         }
+
+        [Fact]
+        public void CanGetBackRawValue()
+        {
+            var parsedInt = new Parsed<int>("this is not a string");
+
+            Assert.Equal("this is not a string", parsedInt.RawValue);
+        }
     }
 }

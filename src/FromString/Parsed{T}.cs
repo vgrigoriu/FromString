@@ -7,12 +7,14 @@ namespace FromString
 
     public class Parsed<T>
     {
-
+        private readonly string rawValue;
         private readonly bool hasValue;
         private readonly T value;
 
         public Parsed(string rawValue)
         {
+            this.rawValue = rawValue;
+
             var parser = (TryParse<T>)ParsedHelper.Parsers[typeof(T)];
             hasValue = parser(rawValue, out value);
         }
@@ -30,6 +32,11 @@ namespace FromString
                     throw new InvalidOperationException("Value was not parsed");
                 return value;
             }
+        }
+
+        public string RawValue
+        {
+            get { return rawValue; }
         }
     }
 

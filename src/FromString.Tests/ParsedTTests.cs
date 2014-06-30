@@ -46,5 +46,13 @@ namespace FromString.Tests
             Assert.True(directDecimal.HasValue);
             Assert.Equal(123.45m, directDecimal.Value);
         }
+
+        [Fact]
+        public void ParsingInvalidUriFails()
+        {
+            var parsedUri = new Parsed<Uri>("this is not an URI");
+
+            Assert.False(parsedUri.HasValue);
+        }
     }
 }

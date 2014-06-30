@@ -54,5 +54,14 @@ namespace FromString.Tests
 
             Assert.False(parsedUri.HasValue);
         }
+
+        [Fact]
+        public void ParsingValidAbsoluteUriSucceeds()
+        {
+            var parsedUri = new Parsed<Uri>("https://github.com/");
+
+            Assert.True(parsedUri.HasValue);
+            Assert.Equal(new Uri("https://github.com/"), parsedUri.Value);
+        }
     }
 }

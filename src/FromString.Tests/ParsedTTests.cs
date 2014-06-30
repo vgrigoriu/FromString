@@ -94,5 +94,13 @@ namespace FromString.Tests
 
             Assert.Equal("7", validParsedInt.ToString());
         }
+
+        [Fact]
+        public void ToStringReturnsRawValueForInvalidParses()
+        {
+            var invalidParsedInt = new Parsed<int>("not an int");
+
+            Assert.Equal("not an int", invalidParsedInt.ToString());
+        }
     }
 }

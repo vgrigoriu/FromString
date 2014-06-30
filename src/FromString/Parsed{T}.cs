@@ -48,7 +48,8 @@ namespace FromString
 
         public override string ToString()
         {
-            return Value.ToString();
+
+            return HasValue ? Value.ToString() : RawValue;
         }
 
         public static implicit operator Parsed<T>(T value)

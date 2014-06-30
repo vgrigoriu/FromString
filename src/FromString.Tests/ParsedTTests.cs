@@ -86,5 +86,13 @@ namespace FromString.Tests
             Assert.True(parsedC.HasValue);
             Assert.Equal("SOME STRING", parsedC.Value.P);
         }
+
+        [Fact]
+        public void ToStringReturnsValueToStringForValidParses()
+        {
+            var validParsedInt = new Parsed<int>("7");
+
+            Assert.Equal("7", validParsedInt.ToString());
+        }
     }
 }

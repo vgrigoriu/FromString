@@ -46,6 +46,11 @@ namespace FromString
             get { return rawValue; }
         }
 
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
+
         public static implicit operator Parsed<T>(T value)
         {
             return new Parsed<T>(value);

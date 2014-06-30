@@ -50,6 +50,11 @@ namespace FromString
         {
             return new Parsed<T>(value);
         }
+
+        public static void AddTryParse(TryParse<T> tryParse)
+        {
+            ParsedHelper.AddParser(tryParse);
+        }
     }
 
     internal static class ParsedHelper

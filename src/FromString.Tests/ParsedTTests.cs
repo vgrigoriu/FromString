@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+
 using Xunit;
 
 namespace FromString.Tests
@@ -62,6 +64,27 @@ namespace FromString.Tests
 
             Assert.True(parsedUri.HasValue);
             Assert.Equal(new Uri("https://github.com/"), parsedUri.Value);
+        }
+
+        private class C
+        {
+            public string P { get; set; }
+        }
+
+        [Fact]
+        public void CanAddCustomParser()
+        {
+            Parsed<C>.AddTryParse(
+                (string s, out C c) =>
+                    {
+                        c = new C { P = s.ToUpperInvariant() };
+                        return true;
+                    });
+
+            var parsedC = new Parsed<C>("some string");
+
+            Assert.True(parsedC.HasValue);
+            Assert.Equal("SOME STRING", parsedC.Value.P);
         }
     }
 }

@@ -7,9 +7,9 @@ namespace FromString.Tests
         [Fact]
         public void InvalidEnumIsNotParsed()
         {
-            var parsedEnum = new Parsed<Color>("invalid enum value");
+            var invalidParsedEnum = new Parsed<Color>("invalid enum value");
 
-            Assert.False(parsedEnum.HasValue);
+            Assert.False(invalidParsedEnum.HasValue);
         }
 
         [Fact]

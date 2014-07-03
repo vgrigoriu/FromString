@@ -84,7 +84,30 @@ namespace FromString
 
         public static TryParse<T> GetParser<T>()
         {
-            return (TryParse<T>)Parsers[typeof(T)];
+            if (Parsers.ContainsKey(typeof(T)))
+                return (TryParse<T>)Parsers[typeof(T)];
+
+            if (typeof(T).IsEnum)
+            {
+                TryParse<T> enumParser = (string s, out T enumValue) =>
+                    {
+                        try
+                        {
+                            enumValue = (T)Enum.Parse(typeof(T), s, ignoreCase: false);
+                            return true;
+                        }
+                        catch (Exception)
+                        {
+                            enumValue = default(T);
+                            return false;
+                        }
+                    };
+
+                Parsers[typeof(T)] = enumParser;
+                return enumParser;
+            }
+
+            throw new InvalidOperationException("Don't know how to parse " + typeof(T).Name);
         }
     }
 }

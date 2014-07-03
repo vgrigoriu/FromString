@@ -74,6 +74,7 @@ namespace FromString
         static ParsedHelper()
         {
             AddParser<int>(int.TryParse);
+            AddParser<double>(double.TryParse);
             AddParser((string s, out Uri uri) => Uri.TryCreate(s, UriKind.Absolute, out uri));
         }
 

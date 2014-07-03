@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ParsedEnumTests.cs" />
+    <Compile Include="ParsedDoubleTests.cs" />
     <Compile Include="ParsedTTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

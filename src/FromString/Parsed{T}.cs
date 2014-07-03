@@ -15,7 +15,7 @@ namespace FromString
         {
             this.rawValue = rawValue;
 
-            var parser = (TryParse<T>)ParsedHelper.Parsers[typeof(T)];
+            var parser = ParsedHelper.GetParser<T>();
             hasValue = parser(rawValue, out value);
         }
 
@@ -69,7 +69,7 @@ namespace FromString
         /// The dictionary is in a separate class because, in Parsed&lt;T>,
         /// there would have been one dictionary for each type parameter
         /// </summary>
-        public static readonly Dictionary<Type, Delegate> Parsers = new Dictionary<Type, Delegate>();
+        private static readonly Dictionary<Type, Delegate> Parsers = new Dictionary<Type, Delegate>();
 
         static ParsedHelper()
         {
@@ -80,6 +80,11 @@ namespace FromString
         public static void AddParser<T>(TryParse<T> parser)
         {
             Parsers[typeof (T)] = parser;
+        }
+
+        public static TryParse<T> GetParser<T>()
+        {
+            return (TryParse<T>)Parsers[typeof(T)];
         }
     }
 }

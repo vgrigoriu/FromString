@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FromString", "FromString.csproj", "{CBF8F7D3-91FA-4122-862C-8DD041C36495}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FromString", "FromString\FromString.csproj", "{CBF8F7D3-91FA-4122-862C-8DD041C36495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FromString.Tests", "..\FromString.Tests\FromString.Tests.csproj", "{6A3244EE-95DC-4941-99B6-1D08479F8FB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FromString.Tests", "FromString.Tests\FromString.Tests.csproj", "{6A3244EE-95DC-4941-99B6-1D08479F8FB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
